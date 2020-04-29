@@ -7,8 +7,6 @@ from alive_progress import alive_bar, config_handler
 
 
 class Cipher:
-    def __init__(self):
-        print("in init")
 
     def arguments(self):
         cipher_parse = argparse.ArgumentParser(description='Encrypt and Decrypt words', add_help=True)
@@ -29,9 +27,9 @@ class Cipher:
         enter_type = args.type
 
         if enter_type:
-            text_intro = "+-+-+-+-+-+ +-+-+-+-+-+ \n" \
-                         + "|E|n|c|r|y|p|t| |W|o|r|d| |by| |B|4|r|t|\n" \
-                         + "+-+-+-+-+-+ +-+-+-+-+-+\n"
+            text_intro = "         +-+-+-+-+-+ +-+-+-+-+-++-+-+-+-+-++-+-+-+-+-+ \n" \
+                         +"         |E|n|c|r|y|p|t| |W|o|r|d| |by| |B|4|r|t|\n" \
+                         + "        +-+-+-+-+-+ +-+-+-+-+-++-+-+-+-+-++-+-+-+-+-+\n"
             subprocess.run(['echo', text_intro])
             subprocess.run(['echo', 'Processing... \n'])
             final_text = self.cifrar(word, key)
@@ -46,7 +44,7 @@ class Cipher:
         else:
             subprocess.run(['echo', 'Decrypt....! \n'])
 
-    def cifrar(self, text_to_enc='comunidad', key='m4st3r'):
+    def cifrar(self, text_to_enc, key):
 
         generated_key = self.generate_text_from_pswd(text_to_enc, key)
         group_list = []
